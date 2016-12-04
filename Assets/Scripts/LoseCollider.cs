@@ -8,6 +8,7 @@ public class LoseCollider : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D collide)
     {
+        Ball.hasStarted = false;
         Level_Manager.LoadLevel("Game_Over");
     }
 }
