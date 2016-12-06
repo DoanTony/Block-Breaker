@@ -33,6 +33,12 @@ public class Ball : MonoBehaviour {
         }
 	}
 
+    public void ResetBall()
+    {
+        Vector3 PaddlePosition = new Vector3(Paddle.transform.position.x,Paddle.transform.position.y + 10f,0f);
+        gameObject.transform.position = PaddlePosition;
+
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         Vector2 TweakingBall = new Vector2(Random.Range(0f, 0.3f), Random.Range(0f, 0.3f));

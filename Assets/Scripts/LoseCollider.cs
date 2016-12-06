@@ -2,13 +2,17 @@
 using System.Collections;
 
 public class LoseCollider : MonoBehaviour {
-
-
-    public LevelManager Level_Manager;
-
+    private Player the_Player;
+    
+    
+    void Start()
+    {
+        the_Player = GameObject.FindObjectOfType<Player>();
+       
+    }
     void OnTriggerEnter2D (Collider2D collide)
     {
         Ball.hasStarted = false;
-        Level_Manager.LoadLevel("Game_Over");
+        the_Player.LoseLife();    
     }
 }
