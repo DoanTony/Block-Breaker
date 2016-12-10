@@ -12,9 +12,14 @@ public class Blocks : MonoBehaviour {
     public GameObject blockDestroyParticle;
     public Sprite[] mySprites;
 
+    void Awake()
+    {
+        breakableBlockCount = 0;
+    }
 
     void Start()
     {
+
         player = FindObjectOfType<Player>();
         isBreakable = (this.tag == "Breakable");
         if(isBreakable)
@@ -22,18 +27,19 @@ public class Blocks : MonoBehaviour {
             breakableBlockCount++;
         }
         levelManager = GameObject.FindObjectOfType<LevelManager>();
+        print(breakableBlockCount);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        player.AddScore();
         int BlockHp = mySprites.Length + 1;
         ++HitCounter;
         if (HitCounter >= BlockHp)
         {
-            breakableBlockCount--;
-            Instantiate(blockDestroyParticle, gameObject.transform.position, Quaternion.identity);
-            player.AddScore();            
+            --breakableBlockCount;
+            print(breakableBlockCount);
+            Instantiate(blockDestroyParticle, gameObject.transform.position, Quaternion.identity);                 
             Destroy(gameObject);
 
         }

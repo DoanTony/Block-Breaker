@@ -46,12 +46,7 @@ public class Paddle : MonoBehaviour
         Vector3 paddlePostion = new Vector3(0.5f, this.transform.position.y, 0f);
         Vector3 ballPosition = ball.transform.position;
 
-        if (!Ball.hasStarted)
-        {
-            Ball.BallRigidBody.velocity = new Vector2(2f, 10f);
-        }
-
-        Ball.hasStarted = true;
+    
         paddlePostion.x = Mathf.Clamp(ballPosition.x, 1.0f, 18.2f);
         this.transform.position = paddlePostion;
     }

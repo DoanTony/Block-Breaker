@@ -3,6 +3,10 @@ using System.Collections;
 
 public class LevelManager : MonoBehaviour {
 
+    void Update()
+    {
+        BlockDestroyed();
+    }
 	
 
     public void LoadLevel(string level_name)
@@ -12,7 +16,7 @@ public class LevelManager : MonoBehaviour {
 
     public void BlockDestroyed()
     {
-        if(Blocks.breakableBlockCount <= 0)
+        if(Blocks.breakableBlockCount <= 0 && !(Application.loadedLevelName == "Start"))
         {
             Application.LoadLevel(Application.loadedLevel + 1);
         }
